@@ -14,6 +14,7 @@ at the Queue exercise.
     q.peek();  // returns 1
     q.remove(); // returns 1
     q.remove(); // returns 2
+    
 
 */
 
