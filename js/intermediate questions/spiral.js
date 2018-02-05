@@ -1,12 +1,5 @@
 /*
 
---- Directions
-Write a function that accepts an integer N
-and returns a NxN spiral matrix.
---- Examples
-  matrix(2)
-    [[undefined, undefined],
-    [undefined, undefined]]
   matrix(3)
     [[1, 2, 3],
     [8, 9, 4],

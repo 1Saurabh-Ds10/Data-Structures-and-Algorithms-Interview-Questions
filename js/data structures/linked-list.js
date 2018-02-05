@@ -1,6 +1,5 @@
 /*
 
---- Directions
 Implement classes Node and Linked Lists
 
 */
@@ -22,15 +21,15 @@ class LinkedList {
   }
 
   size() {
-    let counter = 0;
+    let count = 0;
     let node = this.head;
 
     while (node) {
-      counter++;
+      count++;
       node = node.next;
     }
 
-    return counter;
+    return count;
   }
 
   getFirst() {
@@ -38,15 +37,12 @@ class LinkedList {
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
+    if (!this.head) return null;
 
     let node = this.head;
     while (node) {
-      if (!node.next) {
-        return node;
-      }
+      if (!node.next) return node;
+
       node = node.next;
     }
   }
@@ -56,17 +52,13 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     this.head = this.head.next;
   }
 
   removeLast() {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     if (!this.head.next) {
       this.head = null;
@@ -85,33 +77,24 @@ class LinkedList {
   insertLast(data) {
     const last = this.getLast();
 
-    if (last) {
-      // There are some existing nodes in our chain
-      last.next = new Node(data);
-    } else {
-      // The chain is empty!
-      this.head = new Node(data);
-    }
+    if (last) last.next = new Node(data);
+    else this.head = new Node(data);
   }
 
   getAt(index) {
-    let counter = 0;
+    let count = 0;
     let node = this.head;
     while (node) {
-      if (counter === index) {
-        return node;
-      }
+      if (count === index) return node;
 
-      counter++;
+      count++;
       node = node.next;
     }
     return null;
   }
 
   removeAt(index) {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     if (index === 0) {
       this.head = this.head.next;
@@ -119,9 +102,8 @@ class LinkedList {
     }
 
     const previous = this.getAt(index - 1);
-    if (!previous || !previous.next) {
-      return;
-    }
+    if (!previous || !previous.next) return;
+
     previous.next = previous.next.next;
   }
 
@@ -143,11 +125,11 @@ class LinkedList {
 
   forEach(fn) {
     let node = this.head;
-    let counter = 0;
+    let count = 0;
     while (node) {
-      fn(node, counter);
+      fn(node, count);
       node = node.next;
-      counter++;
+      count++;
     }
   }
 

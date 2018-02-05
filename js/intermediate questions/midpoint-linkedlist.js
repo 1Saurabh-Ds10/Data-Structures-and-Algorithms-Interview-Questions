@@ -1,19 +1,10 @@
+/* 
+  const l = new LinkedList();
+  l.insertLast('1')
+  l.insertLast('2')
+  midpoint(l); // returns { data: '1' }
 
-
-// --- Directions
-// Return the 'middle' node of a linked list.
-// If the list has an even number of elements, return
-// the node at the end of the first half of the list.
-// *Do not* use a counter variable, *do not* retrieve
-// the size of the list, and only iterate
-// through the list one time.
-// --- Example
-//   const l = new LinkedList();
-//   l.insertLast('a')
-//   l.insertLast('b')
-//   l.insertLast('c')
-//   midpoint(l); // returns { data: 'b' }
-
+  */
 function midpoint(list) {
   let slow = list.getFirst();
   let fast = list.getFirst();
@@ -26,18 +17,12 @@ function midpoint(list) {
   return slow;
 }
 
-
-
-
-
 /*
 
 --- Directions
 Implement classes Node and Linked Lists
 
 */
-
-
 class Node {
   constructor(data, next = null) {
     this.data = data;
@@ -55,15 +40,15 @@ class LinkedList {
   }
 
   size() {
-    let counter = 0;
+    let count = 0;
     let node = this.head;
 
     while (node) {
-      counter++;
+      count++;
       node = node.next;
     }
 
-    return counter;
+    return count;
   }
 
   getFirst() {
@@ -71,15 +56,12 @@ class LinkedList {
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
+    if (!this.head) return null;
 
     let node = this.head;
     while (node) {
-      if (!node.next) {
-        return node;
-      }
+      if (!node.next) return node;
+
       node = node.next;
     }
   }
@@ -89,17 +71,13 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     this.head = this.head.next;
   }
 
   removeLast() {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     if (!this.head.next) {
       this.head = null;
@@ -118,33 +96,24 @@ class LinkedList {
   insertLast(data) {
     const last = this.getLast();
 
-    if (last) {
-      // There are some existing nodes in our chain
-      last.next = new Node(data);
-    } else {
-      // The chain is empty!
-      this.head = new Node(data);
-    }
+    if (last) last.next = new Node(data);
+    else this.head = new Node(data);
   }
 
   getAt(index) {
-    let counter = 0;
+    let count = 0;
     let node = this.head;
     while (node) {
-      if (counter === index) {
-        return node;
-      }
+      if (count === index) return node;
 
-      counter++;
+      count++;
       node = node.next;
     }
     return null;
   }
 
   removeAt(index) {
-    if (!this.head) {
-      return;
-    }
+    if (!this.head) return;
 
     if (index === 0) {
       this.head = this.head.next;
@@ -152,9 +121,8 @@ class LinkedList {
     }
 
     const previous = this.getAt(index - 1);
-    if (!previous || !previous.next) {
-      return;
-    }
+    if (!previous || !previous.next) return;
+
     previous.next = previous.next.next;
   }
 
@@ -176,11 +144,11 @@ class LinkedList {
 
   forEach(fn) {
     let node = this.head;
-    let counter = 0;
+    let count = 0;
     while (node) {
-      fn(node, counter);
+      fn(node, count);
       node = node.next;
-      counter++;
+      count++;
     }
   }
 
