@@ -1,17 +1,25 @@
-/* 
-  const l = new LinkedList();
-  l.insertLast('1')
-  l.insertLast('2')
-  midpoint(l); // returns { data: '1' }
+/*
 
-  */
-function midpoint(list) {
+   const list = new List();
+   list.insertLast('a');
+   list.insertLast('b');
+   list.insertLast('c');
+   list.insertLast('d');
+   fromLast(list, 2).data // 'b'
+*/
+
+function fromLast(list, n) {
   let slow = list.getFirst();
   let fast = list.getFirst();
 
-  while (fast.next && fast.next.next) {
+  while (n > 0) {
+    fast = fast.next;
+    n--;
+  }
+
+  while (fast.next) {
     slow = slow.next;
-    fast = fast.next.next;
+    fast = fast.next;
   }
 
   return slow;
