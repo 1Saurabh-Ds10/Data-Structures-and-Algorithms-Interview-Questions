@@ -13,9 +13,7 @@ class Node {
   }
 
   remove(data) {
-    this.children = this.children.filter(node => {
-      return node.data !== data;
-    });
+    this.children = this.children.filter(node => node.data !== data);
   }
 }
 
